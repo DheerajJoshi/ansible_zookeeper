@@ -45,6 +45,8 @@ $ vagrant status
 Current machine states:
 
 zookeeper01                   running (virtualbox)
+zookeeper02                   running (virtualbox)
+zookeeper03                   running (virtualbox)
 ```
 
 #### Deployment
