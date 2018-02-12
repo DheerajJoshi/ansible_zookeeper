@@ -1,0 +1,27 @@
+---
+
+- name: Install Zookeeper package
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - zookeeper
+    - zookeeperd
+
+- name: Configure Zookeeper Id
+  copy:
+    content: "{{ myid }}"
+    dest: /etc/zookeeper/conf/myid
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart zookeeper
+
+- name: Configure Zookeeper
+  template:
+    src: "etc/zookeeper/conf/zoo.cfg.j2"
+    dest: "/etc/zookeeper/conf/zoo.cfg"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart zookeeper
