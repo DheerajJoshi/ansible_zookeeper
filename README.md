@@ -1,4 +1,5 @@
 # Ansible : Playbook Zookeeper
+
 The aim of this project is to deploy a simple Zookeeper cluster on Vagrant.
 
 ## Getting Started
@@ -13,8 +14,8 @@ What things you need to run this Ansible playbook :
 * Update the Vagrant file based on your computer (CPU, memory), if needed
 * You must have download the ubuntu Xenial64 vagrant box :
 
-```
-vagrant box add https://app.vagrantup.com/ubuntu/boxes/xenial64
+```bash
+$ vagrant box add https://app.vagrantup.com/ubuntu/boxes/xenial64
 ```
 
 ### Usage
@@ -27,19 +28,19 @@ Be aware that you need to be in the Vagrant directory to be able to run the comm
 
 Vagrant needs to init the project to run and build it :
 
-```
-vagrant up
+```bash
+$ vagrant up
 ```
 
 After build, you can check which virtual machine Vagrant has created :
 
-```
-vagrant status
+```bash
+$ vagrant status
 ```
 
 If all run like it is expected, you should see something like this :
 
-```
+```bash
 $ vagrant status
 
 Current machine states:
@@ -51,22 +52,34 @@ zookeeper03                   running (virtualbox)
 
 #### Deployment
 
-To deploy the Keycloak instance, you just have to run the Ansible playbook zookeeper.yml with this command :
+This playbook has some dependencies to other roles that must be downloaded before executing the playbook :
 
-```
-ansible-playbook zookeeper.yml
+```bash
+$ ansible-galaxy install -r requirements.yml
 ```
 
-If all run like it is expected, you should access the Zookeeper cluster on this port : 10.0.0.141:2181
+This command should download the Java role from Wikitops Github account to the local role path.
+
+To deploy the Zookeeper cluster, you just have to run the Ansible playbook zookeeper.yml with this command :
+
+```bash
+$ ansible-playbook zookeeper.yml
+```
+
+If everything run as expected, you should access the Zookeeper cluster on this port : 10.0.0.141:2181
 
 #### Destroy
 
-To destroy on what Vagrant has created, just run this command :
+To destroy the Vagrant resources created, just run this command :
 
-```
-vagrant destroy
+```bash
+$ vagrant destroy
 ```
 
 ## Author
 
 Member of Wikitops : https://www.wikitops.io/
+
+## Licence
+
+This project is licensed under the Apache License, Version 2.0. For the full text of the license, see the LICENSE file.
