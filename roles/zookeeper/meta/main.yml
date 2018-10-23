@@ -3,9 +3,6 @@
 dependencies:
 
   - role: java
-    vars:
-      java_package: [ "java-1.8.0-openjdk" ]
-    when: ansible_os_family == "RedHat"
 
 galaxy_info:
   author: wikitops

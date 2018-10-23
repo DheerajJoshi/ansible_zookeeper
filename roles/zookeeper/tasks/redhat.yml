@@ -28,7 +28,7 @@
     dest: /lib/systemd/system/zookeeper.service
     owner: root
     group: root
-    mode: 0755
+    mode: 0644
   notify: Restart zookeeper
 
 - name: ZOOKEEPER REDHAT | Deploy MyId file
