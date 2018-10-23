@@ -10,12 +10,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to run this Ansible playbook :
 
-* [Vagrant](https://www.vagrantup.com/docs/installation/) must be installed on your computer
-* Update the Vagrant file based on your computer (CPU, memory), if needed
-* You must have download the ubuntu Xenial64 vagrant box :
+*   [Vagrant](https://www.vagrantup.com/docs/installation/) must be installed on your computer
+*   Update the Vagrant file based on your computer (CPU, memory), if needed
+*   You must have download the ubuntu Xenial64 vagrant box :
 
 ```bash
-$ vagrant box add https://app.vagrantup.com/ubuntu/boxes/xenial64
+$ vagrant box add https://app.vagrantup.com/ubuntu/boxes/bionic64
 ```
 
 ### Usage
@@ -38,7 +38,7 @@ After build, you can check which virtual machine Vagrant has created :
 $ vagrant status
 ```
 
-If all run like it is expected, you should see something like this :
+If everything run as expected, you should see something like this :
 
 ```bash
 $ vagrant status
@@ -66,7 +66,19 @@ To deploy the Zookeeper cluster, you just have to run the Ansible playbook zooke
 $ ansible-playbook zookeeper.yml
 ```
 
-If everything run as expected, you should access the Zookeeper cluster on this port : 10.0.0.141:2181
+If everything run as expected, you should be able to connect to a Zookeeper server with the CLI :
+
+```bash
+$ bin/zkCli.sh -server 10.0.0.141:2181
+Connecting to 10.0.0.141:2181
+Welcome to ZooKeeper!
+JLine support is enabled
+
+WATCHER::
+
+WatchedEvent state:SyncConnected type:None path:null
+[zk: 10.0.0.141:2181(CONNECTED) 0]
+```
 
 #### Destroy
 
