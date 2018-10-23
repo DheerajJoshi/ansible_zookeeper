@@ -14,7 +14,6 @@ zookeeper_tar_url: http://mirrors.ukfast.co.uk/sites/ftp.apache.org/zookeeper/zo
 zookeeper_clientPort: 2181
 
 # Data and Log directory
-zookeeper_path: /opt/zookeeper
 zookeeper_dataDir: /data/zookeeper
 zookeeper_logDir: /var/log/zookeeper
 

@@ -1,8 +1,5 @@
 ---
 
-- name: ZOOKEEPER REDHAT | Manage user
-  import_tasks: user.yml
-
 - name: ZOOKEEPER REDHAT | Unarchive sources
   unarchive:
     src: "{{ zookeeper_tar_url }}"
@@ -18,7 +15,7 @@
   file:
     state: link
     src: /opt/zookeeper-{{ zookeeper_version }}
-    dest: "{{ zookeeper_path }}"
+    dest: "{{ zookeeper_home }}"
     owner: "{{ zookeeper_user }}"
     group: "{{ zookeeper_group }}"
 
@@ -28,23 +25,5 @@
     dest: /lib/systemd/system/zookeeper.service
     owner: root
     group: root
-    mode: 0644
-  notify: Restart zookeeper
-
-- name: ZOOKEEPER REDHAT | Deploy MyId file
-  copy:
-    content: "{{ myid }}"
-    dest: "{{ zookeeper_path }}/conf/myid"
-    owner: "{{ zookeeper_user }}"
-    group: "{{ zookeeper_group }}"
-    mode: 0644
-  notify: Restart zookeeper
-
-- name: ZOOKEEPER REDHAT | Configuration
-  template:
-    src: "etc/zookeeper/conf/zoo.cfg.j2"
-    dest: "{{ zookeeper_path }}/conf/zoo.cfg"
-    owner: "{{ zookeeper_user }}"
-    group: "{{ zookeeper_group }}"
     mode: 0644
   notify: Restart zookeeper
