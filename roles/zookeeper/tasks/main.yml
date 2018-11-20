@@ -17,17 +17,17 @@
     - "{{ zookeeper_dataDir }}"
     - "{{ zookeeper_logDir }}"
 
-- name: ZOOKEEPER | Manage Redhat environment
-  include_tasks: redhat.yml
-  when: ansible_os_family == "RedHat"
-
 - name: ZOOKEEPER | Manage Debian environment
   include_tasks: debian.yml
-  when: ansible_os_family == "Debian"
+  when: ansible_os_family == 'Debian'
+
+- name: ZOOKEEPER | Manage RedHat environment
+  include_tasks: redhat.yml
+  when: ansible_os_family == 'RedHat'
 
 - name: ZOOKEEPER | Deploy MyId file
   copy:
-    content: "{{ myid }}"
+    content: "{{ hostvars[inventory_hostname].myid }}"
     dest: "{{ zookeeper_home }}/conf/myid"
     owner: "{{ zookeeper_user }}"
     group: "{{ zookeeper_group }}"

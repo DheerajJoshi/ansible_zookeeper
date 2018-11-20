@@ -2,8 +2,7 @@
 
 - name: ZOOKEEPER DEBIAN | Installation
   apt:
-    name: "{{ item }}"
+    name:
+      - zookeeper
+      - zookeeperd
     state: present
-  with_items:
-    - zookeeper
-    - zookeeperd

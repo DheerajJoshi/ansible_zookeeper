@@ -8,12 +8,14 @@
 zookeeper_version: 3.4.13
 
 # Sources
-zookeeper_tar_url: http://mirrors.ukfast.co.uk/sites/ftp.apache.org/zookeeper/zookeeper-{{ zookeeper_version }}/zookeeper-{{ zookeeper_version }}.tar.gz
+zookeeper_tar_mirror: http://mirrors.ukfast.co.uk/sites/ftp.apache.org/zookeeper
+zookeeper_tar_url: "{{ zookeeper_tar_mirror }}/zookeeper-{{ zookeeper_version }}/zookeeper-{{ zookeeper_version }}.tar.gz"
 
 # Port
 zookeeper_clientPort: 2181
 
-# Data and Log directory
+# Directories
+zookeeper_home: /etc/zookeeper
 zookeeper_dataDir: /data/zookeeper
 zookeeper_logDir: /var/log/zookeeper
 

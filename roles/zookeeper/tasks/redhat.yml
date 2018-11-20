@@ -6,7 +6,7 @@
     dest: /opt
     owner: "{{ zookeeper_user }}"
     group: "{{ zookeeper_group }}"
-    remote_src: yes
+    remote_src: true
   args:
     creates: /opt/zookeeper-{{ zookeeper_version }}
   notify: Restart zookeeper

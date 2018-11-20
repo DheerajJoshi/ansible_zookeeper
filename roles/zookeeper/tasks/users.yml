@@ -4,7 +4,7 @@
   group:
     name: "{{ zookeeper_group }}"
     state: present
-    system: yes
+    system: true
 
 - name: ZOOKEEPER USER | Manage user
   user:
@@ -12,4 +12,4 @@
     comment: "Zookeeper admin user"
     group: "{{ zookeeper_group }}"
     state: present
-    system: yes
+    system: true
