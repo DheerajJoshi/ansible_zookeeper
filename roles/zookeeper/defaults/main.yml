@@ -22,3 +22,6 @@ zookeeper_logDir: /var/log/zookeeper
 # User
 zookeeper_group: zookeeper
 zookeeper_user: zookeeper
+
+# Hosts
+zookeeper_hosts: "{{ groups['zookeeper'] | default('127.0.0.1') }}"
